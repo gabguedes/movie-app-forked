@@ -20,6 +20,11 @@ class _NowPlayingListState extends State<NowPlayingList> {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.5,
           child: PageView.builder(
+            onPageChanged: (int page) {
+              setState(() {
+                currentPage = page;
+              });
+            },
             controller: pageController,
             itemCount: widget.movies.length,
             itemBuilder: (context, index) {
@@ -37,11 +42,7 @@ class _NowPlayingListState extends State<NowPlayingList> {
   List<Widget> _buildPageIndicators() {
     List<Widget> indicatorList = [];
     for(int i = 0; i < widget.movies.length; i++){
-      if(i == currentPage){
-        indicatorList.add(_buildIndicator(true));
-      }else{
-        indicatorList.add(_buildIndicator(false));
-      }
+        indicatorList.add(_buildIndicator(i == currentPage));
     }
     return indicatorList;
   }
