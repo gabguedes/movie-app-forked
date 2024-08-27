@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              MoviesHorizontalList(),
+              MoviesHorizontalList(movies: nowPlaying),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 child: Text(
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              MoviesHorizontalList(),
+              MoviesHorizontalList(movies: nowPlaying,),
               const SizedBox(
                 height: 20,
               ),
