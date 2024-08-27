@@ -14,10 +14,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   ApiServices apiService = ApiServices();
   List<Movie> nowPlaying = [];
+  late Future<List<Movie>> movies;
 
-@override
+  @override
   void initState() {
     nowPlaying = apiService.getMovies();
+    movies = apiService.getFutureMovies();
     super.initState();
   }
 
@@ -58,7 +60,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              MoviesHorizontalList(movies: nowPlaying),
+              FutureBuilder(
+                  future: movies,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    return MoviesHorizontalList(movies: nowPlaying);
+                  }
+              ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 child: Text(
@@ -70,7 +80,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              MoviesHorizontalList(movies: nowPlaying,),
+             FutureBuilder(
+                  future: movies,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    return MoviesHorizontalList(movies: nowPlaying);
+                  }
+              ),
               const SizedBox(
                 height: 20,
               ),
