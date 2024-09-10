@@ -11,7 +11,8 @@ class NowPlayingList extends StatefulWidget {
 }
 
 class _NowPlayingListState extends State<NowPlayingList> {
-  PageController pageController = PageController(viewportFraction: 0.8);
+  PageController _pageController =
+      PageController(initialPage: 0, viewportFraction: 0.9);
   int currentPage = 0;
   int numPaginas = 5;
   @override
@@ -21,16 +22,18 @@ class _NowPlayingListState extends State<NowPlayingList> {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.5,
           child: PageView.builder(
+            controller: _pageController,
             onPageChanged: (int page) {
               setState(() {
                 currentPage = page;
               });
             },
-            controller: pageController,
             itemCount: numPaginas,
             itemBuilder: (context, index) {
-            return CustomCardThumbnail(imageAsset: widget.movies[index].backdropPath);
-          },),
+              return CustomCardThumbnail(
+                  imageAsset: widget.movies[index].posterPath);
+            },
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -42,8 +45,8 @@ class _NowPlayingListState extends State<NowPlayingList> {
 
   List<Widget> _buildPageIndicators() {
     List<Widget> indicatorList = [];
-    for(int i = 0; i < numPaginas; i++){
-        indicatorList.add(_buildIndicator(i == currentPage));
+    for (int i = 0; i < numPaginas; i++) {
+      indicatorList.add(_buildIndicator(i == currentPage));
     }
     return indicatorList;
   }
