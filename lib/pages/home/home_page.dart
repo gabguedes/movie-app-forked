@@ -13,13 +13,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   ApiServices apiService = ApiServices();
-  List<Movie> nowPlaying = [];
-  late Future<List<Movie>> movies;
+  late Future<Result> nowPlayingMovies;
+  late Future<Result> popularMovies;
+  late Future<Result> upcomingMovies;
 
   @override
   void initState() {
-    nowPlaying = apiService.getMovies();
-    movies = apiService.getFutureMovies();
+    nowPlayingMovies = apiService.getNowPlayingMovies();
+    popularMovies = apiService.getPopularMovies();
+    upcomingMovies = apiService.getUpcomingMovies();
     super.initState();
   }
 
@@ -45,7 +47,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              NowPlayingList(movies: nowPlaying),
+              FutureBuilder(
+                  future: nowPlayingMovies,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    return NowPlayingList(movies: snapshot.data!.movies);
+                  }),
               const SizedBox(
                 height: 20,
               ),
@@ -61,14 +70,13 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               FutureBuilder(
-                  future: movies,
+                  future: popularMovies,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     }
-                    return MoviesHorizontalList(movies: nowPlaying);
-                  }
-              ),
+                    return MoviesHorizontalList(movies: snapshot.data!.movies);
+                  }),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 child: Text(
@@ -80,15 +88,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-             FutureBuilder(
-                  future: movies,
+              FutureBuilder(
+                  future: upcomingMovies,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     }
-                    return MoviesHorizontalList(movies: nowPlaying);
-                  }
-              ),
+                    return MoviesHorizontalList(movies: snapshot.data!.movies);
+                  }),
               const SizedBox(
                 height: 20,
               ),
