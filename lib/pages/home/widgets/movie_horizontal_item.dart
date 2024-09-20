@@ -45,11 +45,12 @@ class MovieHorizontalItem extends StatelessWidget {
             children: [
               Text(
                 movie.title,
-                maxLines: 1,
+                maxLines: 2,
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
+                  overflow: TextOverflow.ellipsis
                 ),
               ),
               const SizedBox(

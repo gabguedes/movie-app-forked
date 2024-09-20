@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/common/utils.dart';
+import 'package:movie_app/pages/movie_detail/movie_detail_page.dart';
 import 'package:movie_app/widgets/bottom_nav_bar.dart';
 
 void main() {

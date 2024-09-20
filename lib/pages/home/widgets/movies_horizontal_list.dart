@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie_model.dart';
 import 'package:movie_app/pages/home/widgets/movie_horizontal_item.dart';
 
+import '../../movie_detail/movie_detail_page.dart';
+
 class MoviesHorizontalList extends StatelessWidget {
   final List<Movie> movies;
   const MoviesHorizontalList({super.key, required this.movies});
@@ -15,7 +17,12 @@ class MoviesHorizontalList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: movies.length,
         itemBuilder: (context, index) {
-          return MovieHorizontalItem(movie: movies[index]);
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                  MovieDetailPage(movieId: movies[index].id)));
+            },
+              child: MovieHorizontalItem(movie: movies[index]));
       },),
     );
   }

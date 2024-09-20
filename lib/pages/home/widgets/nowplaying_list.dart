@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie_model.dart';
+import 'package:movie_app/pages/movie_detail/movie_detail_page.dart';
 import 'package:movie_app/widgets/custom_card_thumbnail.dart';
 
 class NowPlayingList extends StatefulWidget {
@@ -20,7 +21,7 @@ class _NowPlayingListState extends State<NowPlayingList> {
     return Column(
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.6,
           child: PageView.builder(
             controller: _pageController,
             onPageChanged: (int page) {
@@ -30,8 +31,14 @@ class _NowPlayingListState extends State<NowPlayingList> {
             },
             itemCount: numPaginas,
             itemBuilder: (context, index) {
-              return CustomCardThumbnail(
-                  imageAsset: widget.movies[index].posterPath);
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                      MovieDetailPage(movieId: widget.movies[index].id)));
+                },
+                child: CustomCardThumbnail(
+                    imageAsset: widget.movies[index].posterPath),
+              );
             },
           ),
         ),

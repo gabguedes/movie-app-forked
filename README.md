@@ -1,16 +1,23 @@
-# movie_app
+# Movie App
 
-A new Flutter project.
+![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white)
 
-## Getting Started
+## Descrição
 
-This project is a starting point for a Flutter application.
+Projeto feito para disciplina de Desenvolvimento Cross Platform do Curso de Sistemas de Informação. O projeto consiste em um app de filmes, em que o usuário pode consultar filmes lançamentos, melhores avaliados, populares, etc..
 
-A few resources to get you started if this is your first Flutter project:
+## Técnologias utilizadas
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- `Dart`
+- `Flutter`
+- `TMDB API`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Como rodar o projeto
+
+- É necessário ter instalado o Flutter Framework em sua máquina. Para mais informações [acesse a documentação oficial do Flutter](https://docs.flutter.dev/get-started/install).
+- Baixe o projeto e o abra no Android Studio ou outra IDE que possua suporte para o flutter.
+- Rode o comando ``flutter pub get`` no terminal e aguarde as dependencias serem instaladas.
+- Selecione um emulador e execute o arquivo ``main.dart``
