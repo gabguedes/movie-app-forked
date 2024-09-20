@@ -12,13 +12,11 @@ class MoviesVerticalList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  var size = MediaQuery.of(context).size;
 
     return Container(
-      // margin: const EdgeInsets.symmetric(horizontal: 28, vertical: 10),
-      height: size.height * 0.3,
+      height: 830,
       child: GridView.builder(
-        scrollDirection: Axis.vertical,
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: 12,
         itemBuilder: (context, index) {
           return GestureDetector(

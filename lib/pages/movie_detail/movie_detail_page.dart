@@ -34,26 +34,26 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          FutureBuilder(
-              future: movieDetail,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                try {
-                  List<String> genresList = [];
-
-                  for (int i = 0; i < snapshot.data!.genres.length; i++) {
-                    genresList.add(snapshot.data!.genres[i].name);
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FutureBuilder(
+                future: movieDetail,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
                   }
-
-                  String genres = genresList.join(", ");
-
-                  return Expanded(
-                    child: Column(
+                  try {
+                    List<String> genresList = [];
+        
+                    for (int i = 0; i < snapshot.data!.genres.length; i++) {
+                      genresList.add(snapshot.data!.genres[i].name);
+                    }
+        
+                    String genres = genresList.join(", ");
+        
+                    return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
@@ -170,34 +170,34 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                           ),
                         ),
                       ],
-                    ),
-                  );
-                } on Exception {
-                  return Container(
-                    child: const Text("Filme não Encontrado"),
-                  );
-                }
-              }),
-          const Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: Text(
-              "More like this: ",
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
+                    );
+                  } on Exception {
+                    return Container(
+                      child: const Text("Filme não Encontrado"),
+                    );
+                  }
+                }),
+            const Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: Text(
+                "More like this: ",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
               ),
             ),
-          ),
-          FutureBuilder(
-              future: movieRecommendations,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                return MoviesVerticalList(movies: snapshot.data!.movies);
-              }),
-        ],
+            FutureBuilder(
+                future: movieRecommendations,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return MoviesVerticalList(movies: snapshot.data!.movies);
+                }),
+          ],
+        ),
       ),
     );
   }
