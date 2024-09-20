@@ -63,4 +63,15 @@ class ApiServices {
     }
     throw Exception('Ocorreu um erro');
   }
+
+  Future<Result> getRecommendedMovies({required int movieId}) async{
+    final endpoint = 'movie/$movieId/recommendations';
+    final url = Uri.parse('$baseUrl$endpoint$key');
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      var json = jsonDecode(response.body);
+      return Result.fromJson(json);
+    }
+    throw Exception('Ocorreu um erro');
+  }
 }

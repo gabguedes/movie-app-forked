@@ -18,6 +18,7 @@ class MovieHorizontalItem extends StatelessWidget {
           height: 200,
           width: 140,
           foregroundDecoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18),
             gradient: LinearGradient(
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
