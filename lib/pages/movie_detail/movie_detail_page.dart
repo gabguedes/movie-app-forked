@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie_detail_model.dart';
-import 'package:movie_app/pages/reviews/review_page.dart';
 import 'package:movie_app/pages/widgets/movie_vertical_grid.dart';
 
 import '../../common/utils.dart';
@@ -180,15 +179,6 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                     ],
                   );
                 }),
-            Center(
-              child: ElevatedButton(onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    ReviewPage(movieId: widget.movieId)));
-              }, child: const Text("View Reviews"),),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
             const Padding(
               padding: EdgeInsets.only(left: 10),
               child: Text(

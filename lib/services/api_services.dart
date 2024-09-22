@@ -5,8 +5,6 @@ import 'package:movie_app/models/movie_detail_model.dart';
 import 'package:movie_app/models/movie_model.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/movie_review_model.dart';
-
 const baseUrl = 'https://api.themoviedb.org/3/';
 const key = '?api_key=$apiKey';
 
@@ -97,17 +95,6 @@ class ApiServices {
       var json = jsonDecode(response.body);
       Result resultado = Result.fromJson(json);
       return resultado;
-    }
-    throw Exception('Ocorreu um erro');
-  }
-
-  Future<MovieReviewResult?> getReviewsByMovieId({required int movieId}) async {
-    final endpoint = 'movie/$movieId/reviews';
-    final url = Uri.parse('$baseUrl$endpoint$key');
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      var json = jsonDecode(response.body);
-      return MovieReviewResult.fromJson(json);
     }
     throw Exception('Ocorreu um erro');
   }
