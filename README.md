@@ -25,23 +25,11 @@ Projeto feito para disciplina de Desenvolvimento Cross Platform do Curso de Sist
 ## Telas
 
 <div align="center" style="display = inline_block">
-<div>
-    <h3>Home Page</h3>
-    <img height="500em" src="images/screenshots/home_page.png" alt="App home page with 2 rows named 'Now Playing' and 'Popular'">
-</div>
-<div>
-    <h3>Discovery Page</h3>
-    <img height="500em" src="images/screenshots/discovery_page.png" alt="App discovery page with a search bar and 3 rows of movies sorted by genre">
-</div>
+<img height="500em" src="images/screenshots/home_page.png" alt="App home page with 2 rows named 'Now Playing' and 'Popular'">
+<img height="500em" src="images/screenshots/discovery_page.png" alt="App discovery page with a search bar and 3 rows of movies sorted by genre">
 </div>
 
 <div align="center" style="display = inline_block">
-<div>
-    <h3>Search Page</h3>
-    <img height="500em" src="images/screenshots/search_page.png" alt="App search page with a search bar and a grid of movies based on what was searched">
-</div>
-<div>
-    <h3>Top Rated Page</h3>
-    <img height="500em" src="images/screenshots/top_rated_page.png" alt="App top rated page with the top rated movies">
-</div>
+<img height="500em" src="images/screenshots/search_page.png" alt="App search page with a search bar and a grid of movies based on what was searched">      
+<img height="500em" src="images/screenshots/top_rated_page.png" alt="App top rated page with the top rated movies">
 </div>
