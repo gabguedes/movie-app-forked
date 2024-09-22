@@ -18,7 +18,7 @@ class MovieHorizontalItem extends StatelessWidget {
           height: 200,
           width: 140,
           foregroundDecoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(5),
             gradient: LinearGradient(
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
@@ -30,10 +30,13 @@ class MovieHorizontalItem extends StatelessWidget {
           ),
           margin: const EdgeInsets.symmetric(horizontal: 8),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(5),
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: NetworkImage('$imageUrl${movie.posterPath}'),
+              image: movie.posterPath.isNotEmpty ? Image.network(
+                '$imageUrl${movie.posterPath}',
+                errorBuilder: (context, error, stackTrace) => Image.asset('images/image_not_found.png'),
+              ).image : Image.asset('images/image_not_found.png').image,
             ),
           ),
         ),

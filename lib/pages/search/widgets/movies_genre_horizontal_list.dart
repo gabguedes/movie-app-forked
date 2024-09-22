@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie_model.dart';
 import 'package:movie_app/pages/home/widgets/movie_horizontal_item.dart';
+import 'package:movie_app/pages/widgets/movie_poster_item.dart';
 
 import '../../movie_detail/movie_detail_page.dart';
 
-class MoviesHorizontalList extends StatelessWidget {
+class MoviesGenreHorizontalList extends StatelessWidget {
   final List<Movie> movies;
-  const MoviesHorizontalList({super.key, required this.movies});
+  const MoviesGenreHorizontalList({super.key, required this.movies});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class MoviesHorizontalList extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (context) =>
                   MovieDetailPage(movieId: movies[index].id)));
             },
-              child: MovieHorizontalItem(movie: movies[index]));
+              child: MoviePosterItem(movie: movies[index]));
       },),
     );
   }
